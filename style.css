@@ -1,0 +1,1404 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #070b14;
+    --panel: #0d1422;
+    --panel-light: #111b2d;
+    --border: rgba(255, 255, 255, 0.08);
+
+    --text: #f8fafc;
+    --muted: #94a3b8;
+
+    --blue: #38bdf8;
+    --blue-dark: #2563eb;
+
+    --green: #22c55e;
+    --yellow: #f59e0b;
+    --red: #ef4444;
+
+    --purple: #a78bfa;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.08), transparent 30%),
+        var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+
+/* ================= HEADER ================= */
+
+.top-header {
+    height: 82px;
+    padding: 0 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: rgba(7, 11, 20, 0.92);
+    border-bottom: 1px solid var(--border);
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(15px);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.brand-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #38bdf8
+    );
+
+    font-size: 24px;
+
+    box-shadow:
+        0 0 25px rgba(56, 189, 248, 0.25);
+}
+
+.brand h1 {
+    font-size: 22px;
+    margin-bottom: 4px;
+}
+
+.brand p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.algorithm-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 9px 14px;
+
+    border-radius: 20px;
+
+    background: rgba(34, 197, 94, 0.08);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+
+    color: #86efac;
+    font-size: 13px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+    background: var(--green);
+
+    box-shadow: 0 0 10px var(--green);
+}
+
+
+/* ================= MAIN ================= */
+
+.main-container {
+    width: 96%;
+    max-width: 1800px;
+
+    margin: 25px auto;
+
+    display: grid;
+    grid-template-columns: 360px 1fr;
+
+    gap: 20px;
+}
+
+
+/* ================= CONTROL PANEL ================= */
+
+.control-panel {
+    background: rgba(13, 20, 34, 0.94);
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    padding: 20px;
+
+    height: fit-content;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+.panel-section {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.panel-section h2 {
+    font-size: 16px;
+    margin-bottom: 7px;
+}
+
+.section-description {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+
+    margin-bottom: 15px;
+}
+
+
+/* ================= FORM ================= */
+
+label {
+    display: block;
+
+    color: #cbd5e1;
+
+    font-size: 12px;
+
+    margin:
+        13px 0
+        6px;
+}
+
+select,
+input {
+    width: 100%;
+
+    padding: 11px 12px;
+
+    background: #080e1a;
+
+    color: var(--text);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: 9px;
+
+    outline: none;
+
+    font-size: 13px;
+
+    transition: 0.25s;
+}
+
+select:hover,
+input:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+}
+
+select:focus,
+input:focus {
+    border-color: var(--blue);
+
+    box-shadow:
+        0 0 0 3px rgba(56, 189, 248, 0.08);
+}
+
+option {
+    background: #0d1422;
+    color: white;
+}
+
+
+/* ================= BUTTONS ================= */
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.primary-btn {
+    width: 100%;
+
+    margin-top: 18px;
+
+    padding: 12px;
+
+    border: none;
+    border-radius: 9px;
+
+    color: white;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #0284c7
+        );
+
+    transition: 0.25s;
+
+    box-shadow:
+        0 8px 25px rgba(37, 99, 235, 0.2);
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(37, 99, 235, 0.35);
+}
+
+.secondary-btn {
+    width: 100%;
+
+    padding: 10px;
+
+    margin-top: 9px;
+
+    border-radius: 8px;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    background: #111b2d;
+
+    color: #cbd5e1;
+
+    font-size: 12px;
+
+    transition: 0.25s;
+}
+
+.secondary-btn:hover {
+    background: #17233a;
+
+    border-color: rgba(56, 189, 248, 0.35);
+
+    color: white;
+
+    transform: translateY(-1px);
+}
+
+.button-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+}
+
+
+/* ================= ROUTE RESULT ================= */
+
+.route-result {
+    min-height: 70px;
+
+    padding: 13px;
+
+    border-radius: 10px;
+
+    background: rgba(8, 14, 26, 0.8);
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.result-placeholder {
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+.route-result strong {
+    color: white;
+}
+
+.route-path {
+    color: #86efac;
+
+    font-weight: 600;
+
+    line-height: 1.7;
+}
+
+.route-distance {
+    color: var(--blue);
+
+    margin-top: 5px;
+}
+
+
+/* ================= STATISTICS ================= */
+
+.statistics-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 9px;
+}
+
+.stat-card {
+    padding: 12px;
+
+    background: #0a111e;
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+
+    border-radius: 9px;
+}
+
+.stat-label {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    margin-bottom: 7px;
+}
+
+.stat-card strong {
+    color: white;
+
+    font-size: 18px;
+}
+
+
+/* ================= ROAD CONTROL ================= */
+
+.road-status {
+    margin-top: 10px;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    background: rgba(34, 197, 94, 0.06);
+
+    color: #86efac;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    border: 1px solid rgba(34, 197, 94, 0.12);
+}
+
+.road-status.active {
+    background: rgba(239, 68, 68, 0.08);
+
+    border-color: rgba(239, 68, 68, 0.2);
+
+    color: #fca5a5;
+}
+
+
+/* ================= TRAFFIC FEATURE ================= */
+
+.traffic-panel {
+    position: relative;
+}
+
+.traffic-panel h2 {
+    color: #e2e8f0;
+}
+
+.traffic-panel::before {
+    content: "";
+
+    display: block;
+
+    width: 4px;
+    height: 22px;
+
+    background: linear-gradient(
+        var(--blue),
+        var(--purple)
+    );
+
+    border-radius: 5px;
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+}
+
+.road-info {
+    margin-top: 12px;
+
+    padding: 12px;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(56, 189, 248, 0.07),
+            rgba(167, 139, 250, 0.05)
+        );
+
+    border: 1px solid rgba(56, 189, 248, 0.12);
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    line-height: 1.7;
+}
+
+.road-info strong {
+    color: white;
+}
+
+#trafficLevel option[value="low"] {
+    color: #22c55e;
+}
+
+#trafficLevel option[value="medium"] {
+    color: #f59e0b;
+}
+
+#trafficLevel option[value="heavy"] {
+    color: #ef4444;
+}
+
+
+/* ================= ALGORITHM CARD ================= */
+
+.algorithm-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(37, 99, 235, 0.1),
+            rgba(56, 189, 248, 0.04)
+        );
+
+    border: 1px solid rgba(56, 189, 248, 0.12);
+
+    border-radius: 12px;
+}
+
+.algorithm-icon {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #38bdf8
+    );
+
+    font-size: 20px;
+
+    font-weight: bold;
+}
+
+.algorithm-card h3 {
+    font-size: 13px;
+
+    margin-bottom: 4px;
+}
+
+.algorithm-card p {
+    color: var(--muted);
+
+    font-size: 10px;
+
+    line-height: 1.4;
+}
+
+
+/* ================= GRAPH PANEL ================= */
+
+.graph-panel {
+    min-width: 0;
+
+    background: rgba(13, 20, 34, 0.94);
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+.graph-header {
+    padding: 20px 22px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.graph-header h2 {
+    font-size: 18px;
+
+    margin-bottom: 4px;
+}
+
+.graph-header p {
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+.graph-actions {
+    display: flex;
+
+    gap: 8px;
+}
+
+.graph-actions button {
+    padding: 8px 12px;
+
+    border-radius: 7px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    background: #111b2d;
+
+    color: #cbd5e1;
+
+    font-size: 11px;
+
+    transition: 0.25s;
+}
+
+.graph-actions button:hover {
+    color: white;
+
+    border-color: rgba(56, 189, 248, 0.35);
+}
+
+
+/* ================= GRAPH CONTAINER ================= */
+
+.graph-container {
+    width: 100%;
+
+    min-height: 720px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.graph {
+    width: 98%;
+
+    min-width: 900px;
+
+    max-width: 1250px;
+
+    height: auto;
+
+    overflow: visible;
+}
+
+
+/* ================= EDGES ================= */
+
+.edge {
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.edge line {
+    stroke: #334155;
+
+    stroke-width: 3;
+
+    stroke-linecap: round;
+
+    transition:
+        stroke 0.25s,
+        stroke-width 0.25s,
+        opacity 0.25s;
+}
+
+.edge text {
+    fill: #94a3b8;
+
+    font-size: 12px;
+
+    text-anchor: middle;
+
+    font-weight: 600;
+
+    pointer-events: none;
+
+    paint-order: stroke;
+
+    stroke: #0d1422;
+
+    stroke-width: 4px;
+
+    stroke-linejoin: round;
+
+    transition: 0.25s;
+}
+
+.edge:hover line {
+    stroke: #64748b;
+
+    stroke-width: 5;
+}
+
+
+/* ================= TRAFFIC COLORS ================= */
+
+.edge.traffic-low line {
+    stroke: #22c55e;
+}
+
+.edge.traffic-low text {
+    fill: #86efac;
+}
+
+.edge.traffic-medium line {
+    stroke: #f59e0b;
+}
+
+.edge.traffic-medium text {
+    fill: #fcd34d;
+}
+
+.edge.traffic-heavy line {
+    stroke: #ef4444;
+}
+
+.edge.traffic-heavy text {
+    fill: #fca5a5;
+}
+
+
+/* ================= SELECTED ROAD ================= */
+
+.edge.selected-road line {
+    stroke: #38bdf8 !important;
+
+    stroke-width: 7px !important;
+
+    filter:
+        drop-shadow(
+            0 0 7px
+            rgba(56, 189, 248, 0.8)
+        );
+}
+
+.edge.road-selectable {
+    cursor: pointer;
+}
+
+
+/* ================= BLOCKED ROAD ================= */
+
+.edge.blocked-edge line {
+    stroke: #ef4444 !important;
+
+    stroke-width: 5;
+
+    stroke-dasharray: 10 7;
+
+    animation: blockedRoad 0.8s linear infinite;
+}
+
+.edge.blocked-edge text {
+    fill: #f87171;
+}
+
+@keyframes blockedRoad {
+    to {
+        stroke-dashoffset: -17;
+    }
+}
+
+
+/* ================= ACTIVE EDGE ================= */
+
+.edge.active-edge line {
+    stroke: #38bdf8;
+
+    stroke-width: 6;
+
+    filter:
+        drop-shadow(
+            0 0 7px
+            rgba(56, 189, 248, 0.7)
+        );
+}
+
+
+/* ================= UPDATED EDGE ================= */
+
+.edge.updated-edge line {
+    stroke: #a78bfa;
+
+    stroke-width: 5;
+
+    animation: edgeUpdate 0.8s ease;
+}
+
+@keyframes edgeUpdate {
+    0% {
+        stroke-width: 3;
+    }
+
+    50% {
+        stroke-width: 9;
+    }
+
+    100% {
+        stroke-width: 5;
+    }
+}
+
+
+/* ================= FINAL PATH ================= */
+
+.edge.final-path line {
+    stroke: #22c55e !important;
+
+    stroke-width: 7 !important;
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            rgba(34, 197, 94, 0.7)
+        );
+}
+
+.edge.final-path text {
+    fill: #86efac;
+
+    font-size: 13px;
+}
+
+
+/* ================= PATH ANIMATION ================= */
+
+.edge.animate-path line {
+    stroke: #22c55e;
+
+    stroke-width: 7;
+
+    stroke-dasharray: 15 10;
+
+    animation: pathAnimation 1s linear infinite;
+}
+
+@keyframes pathAnimation {
+    to {
+        stroke-dashoffset: -25;
+    }
+}
+
+
+/* ================= NODES ================= */
+
+.node {
+    cursor: pointer;
+}
+
+.node-circle {
+    fill: #111b2d;
+
+    stroke: #475569;
+
+    stroke-width: 3;
+
+    transition:
+        0.25s;
+
+    filter:
+        drop-shadow(
+            0 5px 10px
+            rgba(0, 0, 0, 0.3)
+        );
+}
+
+.node text {
+    fill: white;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    text-anchor: middle;
+
+    pointer-events: none;
+}
+
+.node:hover .node-circle {
+    stroke: #38bdf8;
+
+    stroke-width: 4;
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(56, 189, 248, 0.6)
+        );
+}
+
+
+/* ================= START NODE ================= */
+
+.node.start .node-circle {
+    fill: #064e3b;
+
+    stroke: #22c55e;
+
+    stroke-width: 5;
+
+    filter:
+        drop-shadow(
+            0 0 12px
+            rgba(34, 197, 94, 0.7)
+        );
+}
+
+
+/* ================= DESTINATION NODE ================= */
+
+.node.destination .node-circle {
+    fill: #7f1d1d;
+
+    stroke: #ef4444;
+
+    stroke-width: 5;
+
+    filter:
+        drop-shadow(
+            0 0 12px
+            rgba(239, 68, 68, 0.7)
+        );
+}
+
+
+/* ================= CURRENT NODE ================= */
+
+.node.current-node .node-circle {
+    fill: #075985;
+
+    stroke: #38bdf8;
+
+    stroke-width: 6;
+
+    filter:
+        drop-shadow(
+            0 0 14px
+            rgba(56, 189, 248, 0.9)
+        );
+
+    animation: currentNode 0.8s infinite alternate;
+}
+
+@keyframes currentNode {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.08);
+    }
+}
+
+
+/* ================= VISITED NODE ================= */
+
+.node.visited-node .node-circle {
+    fill: #1e293b;
+
+    stroke: #64748b;
+
+    stroke-width: 4;
+}
+
+
+/* ================= PATH NODE ================= */
+
+.node.path-node .node-circle {
+    fill: #14532d;
+
+    stroke: #22c55e;
+
+    stroke-width: 6;
+
+    filter:
+        drop-shadow(
+            0 0 12px
+            rgba(34, 197, 94, 0.75)
+        );
+}
+
+
+/* ================= GRAPH MESSAGE ================= */
+
+.graph-message {
+    position: absolute;
+
+    bottom: 15px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    padding: 8px 15px;
+
+    border-radius: 20px;
+
+    background: rgba(7, 11, 20, 0.9);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    pointer-events: none;
+
+    white-space: nowrap;
+}
+
+
+/* ================= LEGEND ================= */
+
+.legend {
+    padding: 13px 20px;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    border-top: 1px solid var(--border);
+
+    background: rgba(7, 11, 20, 0.4);
+}
+
+.legend-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+}
+
+.legend-dot.start {
+    background: var(--green);
+}
+
+.legend-dot.destination {
+    background: var(--red);
+}
+
+.legend-dot.visited {
+    background: #64748b;
+}
+
+.legend-dot.path {
+    background: var(--green);
+}
+
+.legend-road {
+    width: 22px;
+    height: 3px;
+
+    display: inline-block;
+}
+
+.legend-road.blocked {
+    background: var(--red);
+}
+
+.legend-road.traffic {
+    background: var(--yellow);
+}
+
+
+/* ================= STEPS PANEL ================= */
+
+.steps-panel,
+.info-panel {
+    margin: 20px;
+
+    padding: 18px;
+
+    background: #0a111e;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.panel-heading {
+    margin-bottom: 15px;
+}
+
+.panel-heading h2,
+.info-panel h2 {
+    font-size: 16px;
+}
+
+.step-card {
+    padding: 11px;
+
+    margin-bottom: 8px;
+
+    background: #111b2d;
+
+    border-radius: 8px;
+
+    border-left: 3px solid var(--blue);
+}
+
+.step-card h4 {
+    font-size: 12px;
+
+    margin-bottom: 4px;
+}
+
+.step-card p {
+    color: var(--muted);
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+.info-panel p {
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+    margin-top: 10px;
+}
+
+.complexity-box {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+.complexity-box div {
+    padding: 12px;
+
+    background: #111b2d;
+
+    border-radius: 8px;
+}
+
+.complexity-box strong,
+.complexity-box span {
+    display: block;
+}
+
+.complexity-box strong {
+    color: var(--muted);
+
+    font-size: 10px;
+
+    margin-bottom: 5px;
+}
+
+.complexity-box span {
+    color: var(--blue);
+
+    font-size: 16px;
+
+    font-weight: bold;
+}
+
+
+/* ================= BOTTOM SECTION ================= */
+
+.bottom-section {
+    width: 96%;
+
+    max-width: 1800px;
+
+    margin: 20px auto 30px;
+
+    display: grid;
+
+    grid-template-columns: 2fr 1fr;
+
+    gap: 20px;
+}
+
+.explanation-card,
+.project-info {
+    background: rgba(13, 20, 34, 0.94);
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    padding: 22px;
+}
+
+.explanation-card h2,
+.project-info h2 {
+    font-size: 17px;
+
+    margin-bottom: 18px;
+}
+
+
+/* ================= ALGORITHM STEPS ================= */
+
+.algorithm-steps {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 10px;
+}
+
+.algorithm-step {
+    padding: 13px;
+
+    background: #0a111e;
+
+    border-radius: 10px;
+
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.algorithm-step > span {
+    width: 27px;
+    height: 27px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #1d4ed8;
+
+    font-size: 11px;
+
+    margin-bottom: 10px;
+}
+
+.algorithm-step h3 {
+    font-size: 11px;
+
+    margin-bottom: 5px;
+}
+
+.algorithm-step p {
+    color: var(--muted);
+
+    font-size: 9px;
+
+    line-height: 1.5;
+}
+
+
+/* ================= PROJECT INFO ================= */
+
+.project-info p {
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+.feature-list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-top: 15px;
+}
+
+.feature-list span {
+    padding: 6px 9px;
+
+    background: rgba(56, 189, 248, 0.07);
+
+    border: 1px solid rgba(56, 189, 248, 0.12);
+
+    color: #7dd3fc;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+    text-align: center;
+
+    padding: 20px;
+
+    color: #64748b;
+
+    font-size: 10px;
+
+    border-top: 1px solid var(--border);
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1200px) {
+
+    .main-container {
+        grid-template-columns: 320px 1fr;
+    }
+
+    .algorithm-steps {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+}
+
+
+@media (max-width: 900px) {
+
+    .main-container {
+        grid-template-columns: 1fr;
+    }
+
+    .control-panel {
+        width: 100%;
+    }
+
+    .graph-container {
+        justify-content: flex-start;
+    }
+
+    .bottom-section {
+        grid-template-columns: 1fr;
+    }
+
+    .algorithm-steps {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .top-header {
+        padding: 0 15px;
+    }
+
+    .brand h1 {
+        font-size: 17px;
+    }
+
+    .algorithm-status {
+        display: none;
+    }
+
+    .main-container,
+    .bottom-section {
+        width: 94%;
+    }
+
+    .graph-header {
+        align-items: flex-start;
+
+        gap: 10px;
+
+        flex-direction: column;
+    }
+
+    .graph-actions {
+        width: 100%;
+    }
+
+    .graph-actions button {
+        flex: 1;
+    }
+
+    .algorithm-steps {
+        grid-template-columns: 1fr;
+    }
+
+    .statistics-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}

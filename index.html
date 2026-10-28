@@ -1,0 +1,1874 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Route Finder</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="top-header">
+
+        <div class="brand">
+            <div class="brand-icon">🧭</div>
+
+            <div>
+                <h1>Smart Route Finder</h1>
+                <p>Dijkstra's Shortest Path Algorithm</p>
+            </div>
+        </div>
+
+        <div class="algorithm-status">
+            <span class="status-dot"></span>
+            Algorithm Ready
+        </div>
+
+    </header>
+
+
+    <!-- MAIN CONTAINER -->
+    <main class="main-container">
+
+
+        <!-- ================= LEFT CONTROL PANEL ================= -->
+
+        <section class="control-panel">
+
+            <!-- FIND ROUTE -->
+            <div class="panel-section">
+
+                <h2>Find Your Route</h2>
+
+                <p class="section-description">
+                    Select your starting point and destination.
+                </p>
+
+
+                <!-- SOURCE -->
+                <label for="source">
+                    Starting Point
+                </label>
+
+                <select id="source">
+
+                    <option value="A">A — University</option>
+                    <option value="B">B — Market</option>
+                    <option value="C">C — Hospital</option>
+                    <option value="D">D — Railway Station</option>
+                    <option value="E">E — Bus Stand</option>
+                    <option value="F">F — Shopping Mall</option>
+                    <option value="G">G — Airport</option>
+                    <option value="H">H — College</option>
+                    <option value="I">I — Hotel</option>
+                    <option value="J">J — Stadium</option>
+                    <option value="K">K — Park</option>
+                    <option value="L">L — Library</option>
+                    <option value="M">M — Office</option>
+                    <option value="N">N — Restaurant</option>
+                    <option value="O">O — Museum</option>
+                    <option value="P">P — Bank</option>
+                    <option value="Q">Q — Cinema</option>
+                    <option value="R">R — Police Station</option>
+                    <option value="S">S — Metro Station</option>
+                    <option value="T">T — Tech Park</option>
+
+                </select>
+
+
+                <!-- DESTINATION -->
+                <label for="destination">
+                    Destination
+                </label>
+
+                <select id="destination">
+
+                    <option value="A">A — University</option>
+                    <option value="B">B — Market</option>
+                    <option value="C">C — Hospital</option>
+                    <option value="D">D — Railway Station</option>
+                    <option value="E">E — Bus Stand</option>
+                    <option value="F">F — Shopping Mall</option>
+                    <option value="G">G — Airport</option>
+                    <option value="H">H — College</option>
+                    <option value="I">I — Hotel</option>
+                    <option value="J">J — Stadium</option>
+                    <option value="K">K — Park</option>
+                    <option value="L">L — Library</option>
+                    <option value="M">M — Office</option>
+                    <option value="N">N — Restaurant</option>
+                    <option value="O">O — Museum</option>
+                    <option value="P">P — Bank</option>
+                    <option value="Q">Q — Cinema</option>
+                    <option value="R">R — Police Station</option>
+                    <option value="S">S — Metro Station</option>
+                    <option value="T">T — Tech Park</option>
+
+                </select>
+
+
+                <!-- BUTTONS -->
+
+                <button id="findRoute" class="primary-btn">
+                    Find Shortest Route
+                </button>
+
+                <div class="button-row">
+
+                    <button id="demoBtn" class="secondary-btn">
+                        ▶ Start Demo
+                    </button>
+
+                    <button id="resetBtn" class="secondary-btn">
+                        ↻ Reset
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= ROUTE RESULT ================= -->
+
+            <div class="panel-section">
+
+                <h2>Route Result</h2>
+
+                <div id="routeResult" class="route-result">
+
+                    <div class="result-placeholder">
+                        Select locations and find a route.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= ROUTE STATISTICS ================= -->
+
+            <div class="panel-section">
+
+                <h2>Route Statistics</h2>
+
+                <div class="statistics-grid">
+
+                    <div class="stat-card">
+
+                        <span class="stat-label">
+                            Nodes Visited
+                        </span>
+
+                        <strong id="nodesVisited">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span class="stat-label">
+                            Roads Checked
+                        </span>
+
+                        <strong id="roadsChecked">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span class="stat-label">
+                            Path Nodes
+                        </span>
+
+                        <strong id="pathNodes">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span class="stat-label">
+                            Total Weight
+                        </span>
+
+                        <strong id="totalWeight">
+                            0 km
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= ROAD CONTROL ================= -->
+
+            <div class="panel-section">
+
+                <h2>🚧 Road Control</h2>
+
+                <p class="section-description">
+                    Block a road and see how Dijkstra finds another route.
+                </p>
+
+
+                <label for="blockRoad">
+                    Select Road to Block
+                </label>
+
+                <select id="blockRoad">
+
+                    <option value="">
+                        Select a road
+                    </option>
+
+                </select>
+
+
+                <button id="blockRoadBtn" class="secondary-btn">
+                    🚧 Block Selected Road
+                </button>
+
+
+                <button id="clearBlockedBtn" class="secondary-btn">
+                    ✓ Clear Blocked Roads
+                </button>
+
+
+                <div id="roadStatus" class="road-status">
+                    No roads blocked.
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= NEW TRAFFIC FEATURE ================= -->
+
+            <div class="panel-section traffic-panel">
+
+                <h2>⚖️ Traffic & Road Weights</h2>
+
+                <p class="section-description">
+                    Change road weight or traffic conditions dynamically.
+                </p>
+
+
+                <!-- ROAD SELECTION -->
+
+                <label for="roadSelect">
+                    Select Road
+                </label>
+
+                <select id="roadSelect">
+
+                    <option value="">
+                        Select a road
+                    </option>
+
+                </select>
+
+
+
+                <!-- TRAFFIC -->
+
+                <label for="trafficLevel">
+                    Traffic Level
+                </label>
+
+                <select id="trafficLevel">
+
+                    <option value="low">
+                        🟢 Low Traffic ×1
+                    </option>
+
+                    <option value="medium">
+                        🟡 Medium Traffic ×1.5
+                    </option>
+
+                    <option value="heavy">
+                        🔴 Heavy Traffic ×2
+                    </option>
+
+                </select>
+
+
+
+                <!-- ROAD WEIGHT -->
+
+                <label for="roadWeight">
+                    Base Road Weight (km)
+                </label>
+
+                <input
+                    type="number"
+                    id="roadWeight"
+                    min="1"
+                    step="0.5"
+                    value="3"
+                >
+
+
+
+                <!-- APPLY -->
+
+                <button
+                    id="applyRoadSettings"
+                    class="secondary-btn"
+                >
+                    ⚡ Apply Road Settings
+                </button>
+
+
+
+                <!-- ROAD INFORMATION -->
+
+                <div id="roadInfo" class="road-info">
+
+                    Select a road to modify its weight
+                    and traffic.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= DIJKSTRA INFO ================= -->
+
+            <div class="algorithm-card">
+
+                <div class="algorithm-icon">
+                    D
+                </div>
+
+                <div>
+
+                    <h3>Dijkstra's Algorithm</h3>
+
+                    <p>
+                        Finds the shortest path between nodes
+                        in a weighted graph.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= RIGHT GRAPH PANEL ================= -->
+
+        <section class="graph-panel">
+
+
+            <!-- GRAPH HEADER -->
+
+            <div class="graph-header">
+
+                <div>
+
+                    <h2>Smart Route Map</h2>
+
+                    <p>
+                        20-node weighted graph
+                    </p>
+
+                </div>
+
+
+                <div class="graph-actions">
+
+                    <button id="showStepsBtn">
+                        Show Steps
+                    </button>
+
+                    <button id="aboutBtn">
+                        About Algorithm
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= GRAPH ================= -->
+
+            <div class="graph-container">
+
+                <svg
+                    id="routeGraph"
+                    class="graph"
+                    viewBox="0 0 1200 850"
+                    preserveAspectRatio="xMidYMid meet"
+                >
+
+
+                    <!-- ================= EDGES ROW 1 ================= -->
+
+                    <g
+                        class="edge"
+                        id="edge-A-B"
+                        data-edge="A-B"
+                    >
+
+                        <line
+                            x1="110"
+                            y1="100"
+                            x2="355"
+                            y2="100"
+                        />
+
+                        <text
+                            x="232"
+                            y="88"
+                        >
+                            4
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-B-C"
+                        data-edge="B-C"
+                    >
+
+                        <line
+                            x1="355"
+                            y1="100"
+                            x2="600"
+                            y2="100"
+                        />
+
+                        <text
+                            x="477"
+                            y="88"
+                        >
+                            3
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-C-D"
+                        data-edge="C-D"
+                    >
+
+                        <line
+                            x1="600"
+                            y1="100"
+                            x2="845"
+                            y2="100"
+                        />
+
+                        <text
+                            x="722"
+                            y="88"
+                        >
+                            2
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-D-E"
+                        data-edge="D-E"
+                    >
+
+                        <line
+                            x1="845"
+                            y1="100"
+                            x2="1090"
+                            y2="100"
+                        />
+
+                        <text
+                            x="967"
+                            y="88"
+                        >
+                            4
+                        </text>
+
+                    </g>
+
+
+
+                    <!-- ================= EDGES ROW 2 ================= -->
+
+                    <g
+                        class="edge"
+                        id="edge-F-G"
+                        data-edge="F-G"
+                    >
+
+                        <line
+                            x1="110"
+                            y1="310"
+                            x2="355"
+                            y2="310"
+                        />
+
+                        <text
+                            x="232"
+                            y="298"
+                        >
+                            4
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-G-H"
+                        data-edge="G-H"
+                    >
+
+                        <line
+                            x1="355"
+                            y1="310"
+                            x2="600"
+                            y2="310"
+                        />
+
+                        <text
+                            x="477"
+                            y="298"
+                        >
+                            4
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-H-I"
+                        data-edge="H-I"
+                    >
+
+                        <line
+                            x1="600"
+                            y1="310"
+                            x2="845"
+                            y2="310"
+                        />
+
+                        <text
+                            x="722"
+                            y="298"
+                        >
+                            3
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-I-J"
+                        data-edge="I-J"
+                    >
+
+                        <line
+                            x1="845"
+                            y1="310"
+                            x2="1090"
+                            y2="310"
+                        />
+
+                        <text
+                            x="967"
+                            y="298"
+                        >
+                            2
+                        </text>
+
+                    </g>
+
+
+
+                    <!-- ================= EDGES ROW 3 ================= -->
+
+                    <g
+                        class="edge"
+                        id="edge-K-L"
+                        data-edge="K-L"
+                    >
+
+                        <line
+                            x1="110"
+                            y1="520"
+                            x2="355"
+                            y2="520"
+                        />
+
+                        <text
+                            x="232"
+                            y="508"
+                        >
+                            3
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-L-M"
+                        data-edge="L-M"
+                    >
+
+                        <line
+                            x1="355"
+                            y1="520"
+                            x2="600"
+                            y2="520"
+                        />
+
+                        <text
+                            x="477"
+                            y="508"
+                        >
+                            2
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-M-N"
+                        data-edge="M-N"
+                    >
+
+                        <line
+                            x1="600"
+                            y1="520"
+                            x2="845"
+                            y2="520"
+                        />
+
+                        <text
+                            x="722"
+                            y="508"
+                        >
+                            4
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-N-O"
+                        data-edge="N-O"
+                    >
+
+                        <line
+                            x1="845"
+                            y1="520"
+                            x2="1090"
+                            y2="520"
+                        />
+
+                        <text
+                            x="967"
+                            y="508"
+                        >
+                            3
+                        </text>
+
+                    </g>
+
+
+
+                    <!-- ================= EDGES ROW 4 ================= -->
+
+                    <g
+                        class="edge"
+                        id="edge-P-Q"
+                        data-edge="P-Q"
+                    >
+
+                        <line
+                            x1="110"
+                            y1="730"
+                            x2="355"
+                            y2="730"
+                        />
+
+                        <text
+                            x="232"
+                            y="718"
+                        >
+                            4
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-Q-R"
+                        data-edge="Q-R"
+                    >
+
+                        <line
+                            x1="355"
+                            y1="730"
+                            x2="600"
+                            y2="730"
+                        />
+
+                        <text
+                            x="477"
+                            y="718"
+                        >
+                            3
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-R-S"
+                        data-edge="R-S"
+                    >
+
+                        <line
+                            x1="600"
+                            y1="730"
+                            x2="845"
+                            y2="730"
+                        />
+
+                        <text
+                            x="722"
+                            y="718"
+                        >
+                            2
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-S-T"
+                        data-edge="S-T"
+                    >
+
+                        <line
+                            x1="845"
+                            y1="730"
+                            x2="1090"
+                            y2="730"
+                        />
+
+                        <text
+                            x="967"
+                            y="718"
+                        >
+                            3
+                        </text>
+
+                    </g>
+
+
+
+                    <!-- ================= VERTICAL / CROSS EDGES ================= -->
+
+                    <g
+                        class="edge"
+                        id="edge-A-F"
+                        data-edge="A-F"
+                    >
+
+                        <line
+                            x1="110"
+                            y1="100"
+                            x2="110"
+                            y2="310"
+                        />
+
+                        <text
+                            x="125"
+                            y="205"
+                        >
+                            3
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-B-G"
+                        data-edge="B-G"
+                    >
+
+                        <line
+                            x1="355"
+                            y1="100"
+                            x2="355"
+                            y2="310"
+                        />
+
+                        <text
+                            x="370"
+                            y="205"
+                        >
+                            2
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-C-H"
+                        data-edge="C-H"
+                    >
+
+                        <line
+                            x1="600"
+                            y1="100"
+                            x2="600"
+                            y2="310"
+                        />
+
+                        <text
+                            x="615"
+                            y="205"
+                        >
+                            3
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-D-I"
+                        data-edge="D-I"
+                    >
+
+                        <line
+                            x1="845"
+                            y1="100"
+                            x2="845"
+                            y2="310"
+                        />
+
+                        <text
+                            x="860"
+                            y="205"
+                        >
+                            2
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-E-J"
+                        data-edge="E-J"
+                    >
+
+                        <line
+                            x1="1090"
+                            y1="100"
+                            x2="1090"
+                            y2="310"
+                        />
+
+                        <text
+                            x="1105"
+                            y="205"
+                        >
+                            3
+                        </text>
+
+                    </g>
+
+
+
+                    <!-- SECOND VERTICAL -->
+
+                    <g
+                        class="edge"
+                        id="edge-F-K"
+                        data-edge="F-K"
+                    >
+
+                        <line
+                            x1="110"
+                            y1="310"
+                            x2="110"
+                            y2="520"
+                        />
+
+                        <text
+                            x="125"
+                            y="415"
+                        >
+                            4
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-G-L"
+                        data-edge="G-L"
+                    >
+
+                        <line
+                            x1="355"
+                            y1="310"
+                            x2="355"
+                            y2="520"
+                        />
+
+                        <text
+                            x="370"
+                            y="415"
+                        >
+                            3
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-H-M"
+                        data-edge="H-M"
+                    >
+
+                        <line
+                            x1="600"
+                            y1="310"
+                            x2="600"
+                            y2="520"
+                        />
+
+                        <text
+                            x="615"
+                            y="415"
+                        >
+                            2
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-I-N"
+                        data-edge="I-N"
+                    >
+
+                        <line
+                            x1="845"
+                            y1="310"
+                            x2="845"
+                            y2="520"
+                        />
+
+                        <text
+                            x="860"
+                            y="415"
+                        >
+                            3
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-J-O"
+                        data-edge="J-O"
+                    >
+
+                        <line
+                            x1="1090"
+                            y1="310"
+                            x2="1090"
+                            y2="520"
+                        />
+
+                        <text
+                            x="1105"
+                            y="415"
+                        >
+                            2
+                        </text>
+
+                    </g>
+
+
+
+                    <!-- THIRD VERTICAL -->
+
+                    <g
+                        class="edge"
+                        id="edge-K-P"
+                        data-edge="K-P"
+                    >
+
+                        <line
+                            x1="110"
+                            y1="520"
+                            x2="110"
+                            y2="730"
+                        />
+
+                        <text
+                            x="125"
+                            y="625"
+                        >
+                            2
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-L-Q"
+                        data-edge="L-Q"
+                    >
+
+                        <line
+                            x1="355"
+                            y1="520"
+                            x2="355"
+                            y2="730"
+                        />
+
+                        <text
+                            x="370"
+                            y="625"
+                        >
+                            4
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-M-R"
+                        data-edge="M-R"
+                    >
+
+                        <line
+                            x1="600"
+                            y1="520"
+                            x2="600"
+                            y2="730"
+                        />
+
+                        <text
+                            x="615"
+                            y="625"
+                        >
+                            3
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-N-S"
+                        data-edge="N-S"
+                    >
+
+                        <line
+                            x1="845"
+                            y1="520"
+                            x2="845"
+                            y2="730"
+                        />
+
+                        <text
+                            x="860"
+                            y="625"
+                        >
+                            2
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-O-T"
+                        data-edge="O-T"
+                    >
+
+                        <line
+                            x1="1090"
+                            y1="520"
+                            x2="1090"
+                            y2="730"
+                        />
+
+                        <text
+                            x="1105"
+                            y="625"
+                        >
+                            4
+                        </text>
+
+                    </g>
+
+
+
+                    <!-- ================= EXTRA EDGES ================= -->
+
+                    <g
+                        class="edge"
+                        id="edge-A-G"
+                        data-edge="A-G"
+                    >
+
+                        <line
+                            x1="110"
+                            y1="100"
+                            x2="355"
+                            y2="310"
+                        />
+
+                        <text
+                            x="225"
+                            y="195"
+                        >
+                            5
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-B-G2"
+                        data-edge="B-G"
+                    >
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-F-L"
+                        data-edge="F-L"
+                    >
+
+                        <line
+                            x1="110"
+                            y1="310"
+                            x2="355"
+                            y2="520"
+                        />
+
+                        <text
+                            x="220"
+                            y="405"
+                        >
+                            3
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-G-L2"
+                        data-edge="G-L"
+                    >
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-G-H2"
+                        data-edge="G-H"
+                    >
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-C-I"
+                        data-edge="C-I"
+                    >
+
+                        <line
+                            x1="600"
+                            y1="100"
+                            x2="845"
+                            y2="310"
+                        />
+
+                        <text
+                            x="720"
+                            y="195"
+                        >
+                            4
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-H-N"
+                        data-edge="H-N"
+                    >
+
+                        <line
+                            x1="600"
+                            y1="310"
+                            x2="845"
+                            y2="520"
+                        />
+
+                        <text
+                            x="720"
+                            y="405"
+                        >
+                            4
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-L-M2"
+                        data-edge="L-M"
+                    >
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-M-S"
+                        data-edge="M-S"
+                    >
+
+                        <line
+                            x1="600"
+                            y1="520"
+                            x2="845"
+                            y2="730"
+                        />
+
+                        <text
+                            x="720"
+                            y="615"
+                        >
+                            4
+                        </text>
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-N-O2"
+                        data-edge="N-O"
+                    >
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-N-S2"
+                        data-edge="N-S"
+                    >
+
+                    </g>
+
+
+                    <g
+                        class="edge"
+                        id="edge-Q-R2"
+                        data-edge="Q-R"
+                    >
+
+                    </g>
+
+
+
+                    <!-- ================= NODES ================= -->
+
+
+                    <!-- ROW 1 -->
+
+                    <g class="node" id="node-A" data-node="A">
+                        <circle
+                            class="node-circle"
+                            cx="110"
+                            cy="100"
+                            r="27"
+                        />
+                        <text x="110" y="106">A</text>
+                        <title>University</title>
+                    </g>
+
+
+                    <g class="node" id="node-B" data-node="B">
+                        <circle
+                            class="node-circle"
+                            cx="355"
+                            cy="100"
+                            r="27"
+                        />
+                        <text x="355" y="106">B</text>
+                        <title>Market</title>
+                    </g>
+
+
+                    <g class="node" id="node-C" data-node="C">
+                        <circle
+                            class="node-circle"
+                            cx="600"
+                            cy="100"
+                            r="27"
+                        />
+                        <text x="600" y="106">C</text>
+                        <title>Hospital</title>
+                    </g>
+
+
+                    <g class="node" id="node-D" data-node="D">
+                        <circle
+                            class="node-circle"
+                            cx="845"
+                            cy="100"
+                            r="27"
+                        />
+                        <text x="845" y="106">D</text>
+                        <title>Railway Station</title>
+                    </g>
+
+
+                    <g class="node" id="node-E" data-node="E">
+                        <circle
+                            class="node-circle"
+                            cx="1090"
+                            cy="100"
+                            r="27"
+                        />
+                        <text x="1090" y="106">E</text>
+                        <title>Bus Stand</title>
+                    </g>
+
+
+
+                    <!-- ROW 2 -->
+
+                    <g class="node" id="node-F" data-node="F">
+                        <circle
+                            class="node-circle"
+                            cx="110"
+                            cy="310"
+                            r="27"
+                        />
+                        <text x="110" y="316">F</text>
+                        <title>Shopping Mall</title>
+                    </g>
+
+
+                    <g class="node" id="node-G" data-node="G">
+                        <circle
+                            class="node-circle"
+                            cx="355"
+                            cy="310"
+                            r="27"
+                        />
+                        <text x="355" y="316">G</text>
+                        <title>Airport</title>
+                    </g>
+
+
+                    <g class="node" id="node-H" data-node="H">
+                        <circle
+                            class="node-circle"
+                            cx="600"
+                            cy="310"
+                            r="27"
+                        />
+                        <text x="600" y="316">H</text>
+                        <title>College</title>
+                    </g>
+
+
+                    <g class="node" id="node-I" data-node="I">
+                        <circle
+                            class="node-circle"
+                            cx="845"
+                            cy="310"
+                            r="27"
+                        />
+                        <text x="845" y="316">I</text>
+                        <title>Hotel</title>
+                    </g>
+
+
+                    <g class="node" id="node-J" data-node="J">
+                        <circle
+                            class="node-circle"
+                            cx="1090"
+                            cy="310"
+                            r="27"
+                        />
+                        <text x="1090" y="316">J</text>
+                        <title>Stadium</title>
+                    </g>
+
+
+
+                    <!-- ROW 3 -->
+
+                    <g class="node" id="node-K" data-node="K">
+                        <circle
+                            class="node-circle"
+                            cx="110"
+                            cy="520"
+                            r="27"
+                        />
+                        <text x="110" y="526">K</text>
+                        <title>Park</title>
+                    </g>
+
+
+                    <g class="node" id="node-L" data-node="L">
+                        <circle
+                            class="node-circle"
+                            cx="355"
+                            cy="520"
+                            r="27"
+                        />
+                        <text x="355" y="526">L</text>
+                        <title>Library</title>
+                    </g>
+
+
+                    <g class="node" id="node-M" data-node="M">
+                        <circle
+                            class="node-circle"
+                            cx="600"
+                            cy="520"
+                            r="27"
+                        />
+                        <text x="600" y="526">M</text>
+                        <title>Office</title>
+                    </g>
+
+
+                    <g class="node" id="node-N" data-node="N">
+                        <circle
+                            class="node-circle"
+                            cx="845"
+                            cy="520"
+                            r="27"
+                        />
+                        <text x="845" y="526">N</text>
+                        <title>Restaurant</title>
+                    </g>
+
+
+                    <g class="node" id="node-O" data-node="O">
+                        <circle
+                            class="node-circle"
+                            cx="1090"
+                            cy="520"
+                            r="27"
+                        />
+                        <text x="1090" y="526">O</text>
+                        <title>Museum</title>
+                    </g>
+
+
+
+                    <!-- ROW 4 -->
+
+                    <g class="node" id="node-P" data-node="P">
+                        <circle
+                            class="node-circle"
+                            cx="110"
+                            cy="730"
+                            r="27"
+                        />
+                        <text x="110" y="736">P</text>
+                        <title>Bank</title>
+                    </g>
+
+
+                    <g class="node" id="node-Q" data-node="Q">
+                        <circle
+                            class="node-circle"
+                            cx="355"
+                            cy="730"
+                            r="27"
+                        />
+                        <text x="355" y="736">Q</text>
+                        <title>Cinema</title>
+                    </g>
+
+
+                    <g class="node" id="node-R" data-node="R">
+                        <circle
+                            class="node-circle"
+                            cx="600"
+                            cy="730"
+                            r="27"
+                        />
+                        <text x="600" y="736">R</text>
+                        <title>Police Station</title>
+                    </g>
+
+
+                    <g class="node" id="node-S" data-node="S">
+                        <circle
+                            class="node-circle"
+                            cx="845"
+                            cy="730"
+                            r="27"
+                        />
+                        <text x="845" y="736">S</text>
+                        <title>Metro Station</title>
+                    </g>
+
+
+                    <g class="node" id="node-T" data-node="T">
+                        <circle
+                            class="node-circle"
+                            cx="1090"
+                            cy="730"
+                            r="27"
+                        />
+                        <text x="1090" y="736">T</text>
+                        <title>Tech Park</title>
+                    </g>
+
+
+                </svg>
+
+
+                <!-- GRAPH MESSAGE -->
+
+                <div id="graphMessage" class="graph-message">
+                    Select source and destination to find the shortest route.
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= LEGEND ================= -->
+
+            <div class="legend">
+
+                <div class="legend-item">
+                    <span class="legend-dot start"></span>
+                    Start
+                </div>
+
+                <div class="legend-item">
+                    <span class="legend-dot destination"></span>
+                    Destination
+                </div>
+
+                <div class="legend-item">
+                    <span class="legend-dot visited"></span>
+                    Visited
+                </div>
+
+                <div class="legend-item">
+                    <span class="legend-dot path"></span>
+                    Shortest Path
+                </div>
+
+                <div class="legend-item">
+                    <span class="legend-road blocked"></span>
+                    Blocked Road
+                </div>
+
+                <div class="legend-item">
+                    <span class="legend-road traffic"></span>
+                    Traffic Road
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= STEPS PANEL ================= -->
+
+            <div
+                id="stepsPanel"
+                class="steps-panel hidden"
+            >
+
+                <div class="panel-heading">
+
+                    <h2>
+                        Dijkstra Algorithm Steps
+                    </h2>
+
+                </div>
+
+                <div id="stepsContainer">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= ABOUT PANEL ================= -->
+
+            <div
+                id="infoPanel"
+                class="info-panel hidden"
+            >
+
+                <h2>
+                    About Dijkstra's Algorithm
+                </h2>
+
+                <p>
+                    Dijkstra's Algorithm is a shortest-path
+                    algorithm used to find the minimum distance
+                    between nodes in a weighted graph.
+                </p>
+
+                <p>
+                    It repeatedly selects the unvisited node
+                    with the smallest known distance and
+                    updates the distances of its neighboring
+                    nodes.
+                </p>
+
+                <p>
+                    In this project, road weights represent
+                    distances. Traffic conditions can dynamically
+                    increase the effective road weight.
+                </p>
+
+                <div class="complexity-box">
+
+                    <div>
+                        <strong>Time Complexity</strong>
+                        <span>O(V²)</span>
+                    </div>
+
+                    <div>
+                        <strong>Space Complexity</strong>
+                        <span>O(V)</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ================= BOTTOM EXPLANATION ================= -->
+
+    <section class="bottom-section">
+
+        <div class="explanation-card">
+
+            <h2>
+                How Dijkstra Works
+            </h2>
+
+            <div class="algorithm-steps">
+
+                <div class="algorithm-step">
+
+                    <span>1</span>
+
+                    <div>
+                        <h3>Initialize</h3>
+
+                        <p>
+                            Set the starting node distance
+                            to zero and all other distances
+                            to infinity.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="algorithm-step">
+
+                    <span>2</span>
+
+                    <div>
+                        <h3>Select Minimum</h3>
+
+                        <p>
+                            Select the unvisited node with
+                            the smallest distance.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="algorithm-step">
+
+                    <span>3</span>
+
+                    <div>
+                        <h3>Relax Edges</h3>
+
+                        <p>
+                            Calculate whether traveling
+                            through the current node provides
+                            a shorter route.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="algorithm-step">
+
+                    <span>4</span>
+
+                    <div>
+                        <h3>Repeat</h3>
+
+                        <p>
+                            Continue until the destination
+                            is reached.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="algorithm-step">
+
+                    <span>5</span>
+
+                    <div>
+                        <h3>Build Path</h3>
+
+                        <p>
+                            Trace the previous nodes to
+                            construct the shortest path.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= PROJECT INFO ================= -->
+
+        <div class="project-info">
+
+            <h2>
+                Smart Route Finder
+            </h2>
+
+            <p>
+                An interactive visualization of
+                Dijkstra's shortest path algorithm.
+            </p>
+
+            <div class="feature-list">
+
+                <span>20 Nodes</span>
+
+                <span>Weighted Graph</span>
+
+                <span>Dynamic Traffic</span>
+
+                <span>Road Blocking</span>
+
+                <span>Shortest Path</span>
+
+                <span>Real-time Animation</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            Smart Route Finder • ADSA Project •
+            Dijkstra's Shortest Path Algorithm
+        </p>
+
+    </footer>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
